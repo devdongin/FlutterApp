@@ -5,17 +5,31 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
       body: SafeArea(
           child: Container(
-            width:MediaQuery.of(context).size.width,
-            height:MediaQuery.of(context).size.height,
             color: Colors.black,
-            child:
-                Row(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-              Expanded(child: Container(color: Colors.red, width: 50.0, height: 50.0)),
-              Expanded(child: Container(color: Colors.orange, width: 50.0, height: 50.0)),
-              Container(color: Colors.yellow, width: 50.0, height: 50.0),
-              Container(color: Colors.green, width: 50.0, height: 50.0),
-              Container(color: Colors.blue, width: 50.0, height: 50.0),
+            child: Column(mainAxisAlignment:MainAxisAlignment.spaceAround,
+                children: [
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(color: Colors.red, width: 50.0, height: 50.0),
+                    Container(color: Colors.orange, width: 50.0, height: 50.0),
+                    Container(color: Colors.yellow, width: 50.0, height: 50.0),
+                    Container(color: Colors.green, width: 50.0, height: 50.0),
+                  ]),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(color: Colors.orange, width: 50.0, height: 50.0),
+                ],
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                Container(color: Colors.red, width: 50.0, height: 50.0),
+                Container(color: Colors.orange, width: 50.0, height: 50.0),
+                Container(color: Colors.yellow, width: 50.0, height: 50.0),
+                Container(color: Colors.green, width: 50.0, height: 50.0),
+              ]),
+              Container(color: Colors.green, width: 50.0, height: 50.0)
             ]),
           ),
           bottom: false));
