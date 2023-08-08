@@ -1,45 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+
+final homeuri = Uri.parse('https://he11oworld.tistory.com');
 
 class HomeScreen extends StatelessWidget {
+  WebViewController controller = WebViewController()
+    ..setJavaScriptMode(JavaScriptMode.unrestricted)
+    ..loadRequest(homeuri);
+
+  HomeScreen({Key? key}):super(key:key);
+
   @override
-  Widget build(BuildContext context) => Scaffold(
-      body: SafeArea(
-          child: Container(
-            color: Colors.black,
-            child: Column(mainAxisAlignment:MainAxisAlignment.spaceAround,
-                children: [
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(color: Colors.red, width: 50.0, height: 50.0),
-                    Container(color: Colors.orange, width: 50.0, height: 50.0),
-                    Container(color: Colors.yellow, width: 50.0, height: 50.0),
-                    Container(color: Colors.green, width: 50.0, height: 50.0),
-                  ]),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(color: Colors.orange, width: 50.0, height: 50.0),
-                ],
-              ),
-              Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                Container(color: Colors.red, width: 50.0, height: 50.0),
-                Container(color: Colors.orange, width: 50.0, height: 50.0),
-                Container(color: Colors.yellow, width: 50.0, height: 50.0),
-                Container(color: Colors.green, width: 50.0, height: 50.0),
-              ]),
-              Container(color: Colors.green, width: 50.0, height: 50.0)
-            ]),
-          ),
-          bottom: false));
-  // Scaffold(
-  //     backgroundColor: Colors.black,
-  //     body: Column(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       children: [
-  //         Image.asset('asset/img/suyoung_dongin.png'),
-  //         const CircularProgressIndicator(color: Colors.white),
-  //       ],
-  //     ));
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.orange,
+          title: Text('he11o world'),
+          centerTitle: true,
+          actions: [IconButton(onPressed: (){
+              controller.loadRequest(homeuri);
+              }, icon: Icon(Icons.home))],
+        ),
+        body:Center(
+        child:WebViewWidget(
+          controller: controller,
+          //onWebViewCreated: (WebViewController controller){
+          //  this.controller = controller;
+          //},
+          //initialUrl: 'https://he11oworld.tistory.com',
+          //javascriptMode: JavascriptMode.unrestricted,
+        )
+      )
+    );
+  }
 }
